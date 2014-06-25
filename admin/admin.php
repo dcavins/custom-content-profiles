@@ -49,17 +49,16 @@ function ccsp_admin_setup() {
 function ccsp_edit_profile_columns( $columns ) {
 
 	unset( $columns['title'] );
-	unset( $columns['taxonomy-portfolio'] );
 
 	$new_columns = array(
 		'cb' => '<input type="checkbox" />',
-		'title' => __( 'Portfolio Item', 'custom-content-profiles' )
+		'title' => __( 'Name', 'custom-content-profiles' )
 	);
 
 	if ( current_theme_supports( 'post-thumbnails' ) )
-		$new_columns['thumbnail'] = __( 'Thumbnail', 'custom-content-profiles' );
+		$new_columns['thumbnail'] = __( 'Photo', 'custom-content-profiles' );
 
-	$new_columns['taxonomy-portfolio'] = __( 'Portfolio', 'custom-content-profiles' );
+	$new_columns['position'] = __( 'Position', 'custom-content-profiles' );
 
 	return array_merge( $new_columns, $columns );
 }
@@ -85,6 +84,12 @@ function ccsp_manage_profile_columns( $column, $post_id ) {
 
 			elseif ( function_exists( 'get_the_image' ) )
 				get_the_image( array( 'image_scan' => true, 'width' => 40, 'height' => 40 ) );
+
+			break;
+
+		case 'position' :
+
+			echo get_post_meta( $post_id, 'profile_job_title', true );
 
 			break;
 

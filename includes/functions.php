@@ -247,7 +247,7 @@ endif;
 
 /**
  * Reorder the results on the Profiles page by administrative importance.
- * Posts have a postmeta profile_management_level that ranges from 1 "director" to 77 "footsoldier"
+ * Posts have a postmeta profile_management_level that ranges from 1 "director" to 77 "laborer"
  */
 function modify_profile_archive_main_loop( $query ) {
 
